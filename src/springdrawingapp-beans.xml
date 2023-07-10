@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd"
+       xmlns:context="http://www.springframework.org/schema/context">
+
+    <!-- below bean definition is for setter injection since we are using spring:property element inside triangle bean definition -->
+    <!--<spring:bean name="triangle" class="com.package6.Triangle">
+        <spring:property name="type" value="Scalene"></spring:property>   &lt;!&ndash; this will call setType method &ndash;&gt;
+        <spring:property name="list">                                     &lt;!&ndash; this will call setList method and add all entries provided in spring:value element &ndash;&gt;
+            <spring:list value-type="java.lang.String">
+                <spring:value>fdsfdsf1</spring:value>
+                <spring:value>fdsfdsf2</spring:value>
+                <spring:value>fdsfdsf3</spring:value>
+            </spring:list>
+        </spring:property>
+    </spring:bean>-->
+
+    <context:annotation-config></context:annotation-config>
+
+    <context:component-scan base-package="com.package6"></context:component-scan>
+
+    <!-- below bean definition is for constructor injection since we are using spring:constructor-arg element inside triangle bean definition-->
+    <spring:bean name="triangle" class="com.package6.Triangle">
+        <spring:constructor-arg value="Scalene"/>                   <!-- this will use 2 args constructor since we have used 2 constructor-arg element one below the other -->
+        <spring:constructor-arg>
+            <spring:list>
+                <spring:value>fdsfdsf1</spring:value>
+                <spring:value>fdsfdsf2</spring:value>
+                <spring:value>fdsfdsf3</spring:value>
+            </spring:list>
+        </spring:constructor-arg>
+    </spring:bean>
+
+    <!--<spring:bean name="circle" class="com.package6.Circle"></spring:bean>-->
+
+    <spring:bean name="drawing" class="com.package6.Drawing">
+        <!--<spring:property name="shape" ref="triangle"/>&lt;!&ndash; this will call setShape method &ndash;&gt;-->
+    </spring:bean>
+
+    <!--<spring:bean class="com.package6.MyBeanFactoryPostProcessor" />-->
+    <context:property-placeholder location="pointprops.properties"  />
+</spring:beans>

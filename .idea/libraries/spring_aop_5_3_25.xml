@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="spring-aop-5.3.25">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.3.25/spring-aop-5.3.25.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
